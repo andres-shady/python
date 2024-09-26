@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <button type="submit"><a href="{% url 'login' %}">Connexion bibliothecaire</a></button>
+</header>
+<main>
+    <h1>Liste des médias</h1>
+   <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Créateur</th>
+                <th>Type</th>
+                <th>Disponible</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% csrf_token %}
+            {% for media in medias %}
+                <tr>
+                    <td>{{ media.name }}</td>
+                    <td>{{ media.creator }}</td>
+                    <td>{{ media.get_type_media_display }}</td>
+                    <td> {% if media.disponible %}
+                            <span style="color: green;">Disponible</span>
+                         {% else %}
+                            <span style="color: red;">Indisponible</span>
+                         {% endif %}
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</main>
+    
+</body>
+</html>

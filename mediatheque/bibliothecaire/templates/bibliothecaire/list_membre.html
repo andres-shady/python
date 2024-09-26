@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Page liste des membres</title>
+</head>
+<body>
+    <h1>Voici la liste des membres de la médiatheque</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Detail</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for membre in membres %}
+        <tr>
+            <td>
+                {{membre.last_name}}
+            </td>
+            <td>
+                {{membre.first_name}}
+            </td>
+            <td>
+                <button type="submit"><a href="{% url 'membre_detail' membre.id %}">Voir profil</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+   </table>
+    <button type="submit"><a href="{% url 'add_membre' %}">Ajouter un membre</a></button>
+    <button type="submit"><a href="{% url 'bibliothecaire_home'%}">Retour au menu</a></button>
+</body>
+</html>

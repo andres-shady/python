@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Page suppression de membre</title>
+</head>
+<body>
+<h1>Confirmation de la suppression</h1>
+    <p>Êtes-vous sur de vouloir supprimer le membre {{membre.name}}</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <button type="submit">Oui</button>
+</form>
+<button type="submit"><a href="{% url 'membre_detail' id=membre.id %}">Non</a></button>
+<button type="submit"><a href="{% url 'bibliothecaire_home'%}">Retour au menu</a></button>
+</body>
+</html>
